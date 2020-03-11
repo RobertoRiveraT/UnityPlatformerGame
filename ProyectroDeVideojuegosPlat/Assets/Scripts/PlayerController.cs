@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour{
     //private PlayerBase playerBase;
     public BoxCollider2D boxc;
 
+    public Sprite[] frames; 
+
 
   
     public bool fRight = true;

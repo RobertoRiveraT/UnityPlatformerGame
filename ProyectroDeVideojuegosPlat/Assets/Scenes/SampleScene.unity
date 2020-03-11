@@ -1518,6 +1518,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
+      propertyPath: frames.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 608782614}
