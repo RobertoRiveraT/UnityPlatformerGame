@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 873359733}
   - component: {fileID: 873359732}
   m_Layer: 8
-  m_Name: Cube (12)
+  m_Name: CUBE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1436,7 +1436,7 @@ PrefabInstance:
     - target: {fileID: 906888802061655612, guid: d1c7fa6d01c39412db124634f260163a,
         type: 3}
       propertyPath: m_Name
-      value: Cube (8)
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c7fa6d01c39412db124634f260163a, type: 3}
