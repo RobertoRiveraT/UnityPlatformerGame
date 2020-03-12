@@ -18,15 +18,12 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (onAir())
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Jump");
-            animator.SetBool("jumping", true);
+            animator.SetTrigger("jump");
         }
-        else
-        {
-            animator.SetBool("jumping", false);
-        }
+
         if (isMoving() && !onAir())
         {
             Debug.Log("moving");
@@ -45,7 +42,7 @@ public class AnimationController : MonoBehaviour
 
     public bool onAir()
     {
-        return !pc.onPlatform();
+        return !(pc.onPlatform());
     }
 
 }

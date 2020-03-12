@@ -277,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409513355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.07, y: -1.39, z: 0}
+  m_LocalPosition: {x: -11.86, y: -0.61, z: 0}
   m_LocalScale: {x: 2.309344, y: 0.2625, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -586,10 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   player: {fileID: 109345338}
-  boxc: {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
+  pc: {fileID: 0}
 --- !u!95 &831588403
 Animator:
   serializedVersion: 3
@@ -1023,7 +1020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225256458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.1, y: -2.23, z: 0}
+  m_LocalPosition: {x: -8.83, y: -1.76, z: 0}
   m_LocalScale: {x: 2.309344, y: 0.2625, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1356,7 +1353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807880050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.08, y: 0.31, z: 0}
+  m_LocalPosition: {x: 4.42, y: 0.5, z: 0}
   m_LocalScale: {x: 2.309344, y: 0.28538343, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1638,27 +1635,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 39e87880355523044b3ccf649b436eda,
+      objectReference: {fileID: 21300000, guid: fcf07799a6df01245927cbfce1abfd9d,
         type: 3}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.55614215
+      value: -2.1985955
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Size.y
-      value: 3.9604955
+      value: 0.6755886
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.34744245
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Size.x
-      value: 4.7939363
+      value: 2.83563
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -1815,12 +1827,12 @@ PrefabInstance:
     - target: {fileID: 7032948093894881439, guid: fb4dc2f5f51fd40a597ab386daf91f88,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.64
+      value: -5.36
       objectReference: {fileID: 0}
     - target: {fileID: 7032948093894881439, guid: fb4dc2f5f51fd40a597ab386daf91f88,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46
+      value: -0.79
       objectReference: {fileID: 0}
     - target: {fileID: 7032948093894881439, guid: fb4dc2f5f51fd40a597ab386daf91f88,
         type: 3}
@@ -1866,6 +1878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032948093894881439, guid: fb4dc2f5f51fd40a597ab386daf91f88,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3383625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb4dc2f5f51fd40a597ab386daf91f88, type: 3}
