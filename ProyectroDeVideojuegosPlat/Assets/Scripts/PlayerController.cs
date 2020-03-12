@@ -34,10 +34,11 @@ public class PlayerController : MonoBehaviour
 
     public int step = 0;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-
 
         iniX = gameObject.transform.position.x;
         iniY = gameObject.transform.position.y;
@@ -47,6 +48,8 @@ public class PlayerController : MonoBehaviour
         healthBar.setHealth(health);
 
         step = 0;
+
+        animator = GetComponent<Animator>();
 
     }
 
@@ -66,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             gameObject.transform.Translate(new Vector3(x * playerRunningVelocity, 0, 0));
+            //animator.SetBool("running", true);
         }
         else
         {
@@ -73,16 +77,17 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.Translate(new Vector3(x * playerVelocity, 0, 0));
         }
 
-        if (onPlatform())
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
         {
-            if (step > 7)
-            {
-                step = 0;
-            }
-            TheSpriteRenderer.sprite = frames[step];
-            step += 1;
+            //Debug.Log("moving");
+            //animator.SetBool("running", true);
         }
 
+
+        if (step > 7)
+        {
+            step = 0;
+        }
 
 
         if (onPlatform())
@@ -117,18 +122,18 @@ public class PlayerController : MonoBehaviour
             boxc.enabled = false;
             health = health - .01f;
             healthBar.setHealth(health);
-            print("down arrow key is held down");
+            //print("down arrow key is held down");
         }
 
         if (gameObject.transform.position.y < -5)
         {
-            Debug.Log("caiste");
+            //Debug.Log("caiste");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
 
-    private bool onPlatform()
+    public bool onPlatform()
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxc.bounds.center, boxc.bounds.size, 0f, Vector2.down, .1f, layerMask);
         return raycastHit2d.collider != null;
