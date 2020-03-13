@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a73cec765956454bb0bd2178c49c133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
+  bar: {fileID: 1536615161}
 --- !u!1 &659318482 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6099119906497849742, guid: 6977e9711d8884974bd95e0a2c5e74f2,
@@ -1115,6 +1115,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6977e9711d8884974bd95e0a2c5e74f2, type: 3}
+--- !u!4 &1536615161 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6094114186691951481, guid: 990bf90bb7c234269850e2f677555f37,
+    type: 3}
+  m_PrefabInstance: {fileID: 7876287000257752086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1657559728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,7 +1691,7 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: playerVelocity
-      value: 0.1
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -1745,6 +1751,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5790dc203c8cf7148a0472a1f1604476,
         type: 3}
+    - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: playerRunningVelocity
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198675, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Name

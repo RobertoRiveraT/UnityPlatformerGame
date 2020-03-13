@@ -67,14 +67,26 @@ public class PlayerController : MonoBehaviour
 
         //run
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            gameObject.transform.Translate(new Vector3(x * playerRunningVelocity, 0, 0));
+        { 
+            if(onPlatform()){
+                gameObject.transform.Translate(new Vector3(x * playerRunningVelocity, 0, 0));
             //animator.SetBool("running", true);
+            }
+            else{
+                gameObject.transform.Translate(new Vector3(x * playerRunningVelocity/2, 0, 0));
+            }
+            
         }
         else
         {
             //walk
-            gameObject.transform.Translate(new Vector3(x * playerVelocity, 0, 0));
+            if(onPlatform()){
+                gameObject.transform.Translate(new Vector3(x * playerVelocity, 0, 0));
+      
+            }
+            else{
+                gameObject.transform.Translate(new Vector3(x * playerVelocity/2, 0, 0));
+            }
         }
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
@@ -120,8 +132,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("down") && onPlatform())
         {
             boxc.enabled = false;
-            health = health - .01f;
-            healthBar.setHealth(health);
+            
             //print("down arrow key is held down");
         }
 
@@ -161,8 +172,16 @@ public class PlayerController : MonoBehaviour
         {
             //el jugador recibe daño
             Debug.Log("ouch");
-            //health--
-            //health-=0.1f;
+            health = health - .1f;
+            if(health <= 0){
+                Debug.Log("You died");
+                healthBar.setHealth(0);
+            }
+            else{
+                Debug.Log(health);
+                healthBar.setHealth(health);
+            }
+            
         }
     }
 }
