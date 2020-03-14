@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer TheSpriteRenderer;
     //private PlayerBase playerBase;
     public BoxCollider2D boxc;
-    public bool useGravity;
+    //public bool useGravity;
     public Sprite[] frames;
 
     public bool fRight = true;
@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     public float playerRunningVelocity;
     public int doubleJump;
     public int floatP;
-    public float rate = 1.5f;
-    float nextSpawn = 0.0f;
 
     public float lastPressTime;
 
@@ -36,7 +34,9 @@ public class PlayerController : MonoBehaviour
     public float iniY;
 
     public int step = 0;
-    float flyTime = 1.5f;
+    public float flyTime = 1.5f;
+    //int doubleJump = 0;
+    //int floatP = 0;
 
     
     private Animator animator;
@@ -112,8 +112,6 @@ public class PlayerController : MonoBehaviour
 
         if (onPlatform())
         {
-            doubleJump = 1;
-            floatP = 1;
             rigid.rotation = 0;
         }
         /*if (Input.GetKeyDown(KeyCode.Space) && doubleJump > 0)
@@ -122,15 +120,13 @@ public class PlayerController : MonoBehaviour
             rigid.rotation = 0;
             doubleJump--;
         }*/
-        if (Input.GetKeyDown(KeyCode.Space) && floatP > 0 && doubleJump > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && !onPlatform() && floatP > 0 && doubleJump > 0)
         {   
-
-            fly();
-            
-
-            rigid.velocity = Vector2.up * jumpHeight;
+            StartCoroutine("fly");
+            //rigid.velocity = Vector2.up * jumpHeight;
             rigid.rotation = 0;
             floatP--;
+            doubleJump--;
         }
         else if (onPlatform() && Input.GetKeyDown(KeyCode.Space))
         {
@@ -205,19 +201,16 @@ public class PlayerController : MonoBehaviour
             
         }
     }
-    private void fly(){
-        //gameObject.transform.Translate(new Vector2(.2f,0.0f));
-        /*useGravity = !useGravity;
-            
-        if(Time.time > nextSpawn){
-            useGravity = true;
-            nextSpawn = Time.time + rate;
-        }
 
-        if (!useGravity){
-            rigid.gravityScale = 0.0f;
-        }*/
-            
+    IEnumerator fly()
+    {
+        Debug.Log("FLU");
+        rigid.gravityScale = 0.0f;
+        rigid.velocity = Vector2.up * 0f;
+        //gameObject.transform.Translate(new Vector3(0.1f, 0, 0));
+        yield return new WaitForSeconds(flyTime);
+        rigid.gravityScale = 3.0f;
+        //isHitted = false;
     }
 }
 
