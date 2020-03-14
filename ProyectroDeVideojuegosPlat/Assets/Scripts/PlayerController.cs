@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             rigid.rotation = 0;
             doubleJump--;
         }*/
-        if (Input.GetKeyDown(KeyCode.Space) && floatP > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && floatP > 0 && doubleJump > 0)
         {   
 
             fly();
