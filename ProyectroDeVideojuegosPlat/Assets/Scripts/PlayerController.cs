@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer TheSpriteRenderer;
     //private PlayerBase playerBase;
     public BoxCollider2D boxc;
-
+    public bool useGravity;
     public Sprite[] frames;
 
     public bool fRight = true;
@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public float playerVelocity;
     public float playerRunningVelocity;
     public int doubleJump;
+    public int floatP;
+    public float rate = 1.5f;
+    float nextSpawn = 0.0f;
 
     public float lastPressTime;
 
@@ -33,7 +36,9 @@ public class PlayerController : MonoBehaviour
     public float iniY;
 
     public int step = 0;
+    float flyTime = 1.5f;
 
+    
     private Animator animator;
     
     public Transform carryLocation; 
@@ -108,19 +113,32 @@ public class PlayerController : MonoBehaviour
         if (onPlatform())
         {
             doubleJump = 1;
+            floatP = 1;
             rigid.rotation = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && doubleJump > 0)
+        /*if (Input.GetKeyDown(KeyCode.Space) && doubleJump > 0)
         {
             rigid.velocity = Vector2.up * jumpHeight;
             rigid.rotation = 0;
             doubleJump--;
+        }*/
+        if (Input.GetKeyDown(KeyCode.Space) && floatP > 0)
+        {   
+
+            fly();
+            
+
+            rigid.velocity = Vector2.up * jumpHeight;
+            rigid.rotation = 0;
+            floatP--;
         }
         else if (onPlatform() && Input.GetKeyDown(KeyCode.Space))
         {
+            //fly();
             rigid.rotation = 0;
             rigid.velocity = Vector2.up * jumpHeight;
             doubleJump = 1;
+            floatP = 1;
         }
 
         if (fRight == false && x > 0)
@@ -186,6 +204,20 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+    private void fly(){
+        //gameObject.transform.Translate(new Vector2(.2f,0.0f));
+        /*useGravity = !useGravity;
+            
+        if(Time.time > nextSpawn){
+            useGravity = true;
+            nextSpawn = Time.time + rate;
+        }
+
+        if (!useGravity){
+            rigid.gravityScale = 0.0f;
+        }*/
+            
     }
 }
 
