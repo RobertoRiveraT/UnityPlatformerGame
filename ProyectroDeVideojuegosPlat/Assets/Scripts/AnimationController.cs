@@ -25,6 +25,14 @@ public class AnimationController : MonoBehaviour
             animator.SetTrigger("jump");
         }
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("Grab");
+            animator.SetBool("grab", true);
+        }else{
+            //animator.SetBool("grab", false);
+        }
+
         if (isMoving() && !onAir())
         {
             Debug.Log("moving");
@@ -36,21 +44,11 @@ public class AnimationController : MonoBehaviour
         }
         
          if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if (pc.currentItem!=null)
-            {
-                // remove as child
-                pc.currentItem.parent = null;
+         {
+           
+         }
 
-                //set position near player
-                pc.currentItem.position = transform.GetComponent<pc.TheSpriteRenderer>().bounds.max;
 
-                // release reference
-                pc.currentItem = null;
-            }else{
-            	grab();
-            }
-        }
     }
 
     public bool isMoving()
@@ -62,9 +60,26 @@ public class AnimationController : MonoBehaviour
     {
         return !(pc.onPlatform());
     }
+
+    public void desGrab()
+    {
+        animator.SetBool("grab", false);
+    }
     
     public void grab()
     {
+        /*
+         if (pc.currentItem!=null)
+            {
+                // remove as child
+                pc.currentItem.parent = null;
+
+                //set position near player
+                //pc.currentItem.position = transform.GetComponent<pc.TheSpriteRenderer>().bounds.max;
+
+                // release reference
+                pc.currentItem = null;
+            }
     	RaycastHit2D hit;
     	if(pc.fRight){
     		hit= Physics2D.Raycast(pc.gameObject.transform.position,
@@ -80,6 +95,9 @@ public class AnimationController : MonoBehaviour
     	if(hit.collider != null){
     		Debug.Log("grab");
     	}
+
+
+        */
     }
 
 }

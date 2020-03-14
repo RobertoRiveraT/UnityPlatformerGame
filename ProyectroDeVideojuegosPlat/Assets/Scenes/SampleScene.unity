@@ -724,6 +724,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 109345338}
   pc: {fileID: 0}
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &831588403
 Animator:
   serializedVersion: 3
@@ -1810,25 +1813,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 974a12c416dd26647a8ade9e47a8a7be,
         type: 3}
+    - target: {fileID: 6154675667457983089, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675667457983089, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675667457983089, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Offset.y
-      value: -2.1985955
+      value: -0.11736822
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.6755886
+      value: 4.838043
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.34744245
+      value: 0.8251014
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.83563
+      value: 1.7438412
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -1858,7 +1876,7 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: playerVelocity
-      value: 0.08
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -1926,7 +1944,7 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: jumpHeight
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198675, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
