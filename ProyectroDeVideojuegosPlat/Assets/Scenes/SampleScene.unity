@@ -1863,6 +1863,16 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: frames.Array.size
