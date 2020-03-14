@@ -7,6 +7,7 @@ public class AnimationController : MonoBehaviour
     public Animator animator;
     public GameObject player;
     public PlayerController pc;
+    public LayerMask EnemyLayer;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,23 @@ public class AnimationController : MonoBehaviour
         {
             animator.SetBool("running", false);
         }
+        
+         if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (pc.currentItem!=null)
+            {
+                // remove as child
+                pc.currentItem.parent = null;
+
+                //set position near player
+                pc.currentItem.position = transform.GetComponent<pc.TheSpriteRenderer>().bounds.max;
+
+                // release reference
+                pc.currentItem = null;
+            }else{
+            	grab();
+            }
+        }
     }
 
     public bool isMoving()
@@ -43,6 +61,25 @@ public class AnimationController : MonoBehaviour
     public bool onAir()
     {
         return !(pc.onPlatform());
+    }
+    
+    public void grab()
+    {
+    	RaycastHit2D hit;
+    	if(pc.fRight){
+    		hit= Physics2D.Raycast(pc.gameObject.transform.position,
+    		pc.gameObject.transform.right,
+    		1.0f,
+    		EnemyLayer);
+    	}else{
+    		hit= Physics2D.Raycast(pc.gameObject.transform.position,
+    		pc.gameObject.transform.left,
+    		1.0f,
+    		EnemyLayer);
+    	}
+    	if(hit.collider != null){
+    		Debug.Log("grab");
+    	}
     }
 
 }

@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public int step = 0;
 
     private Animator animator;
+    
+    public Transform carryLocation; 
+    public Transform currentItem = null;
 
     // Start is called before the first frame update
     void Start()
