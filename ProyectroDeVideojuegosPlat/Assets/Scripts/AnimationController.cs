@@ -8,7 +8,14 @@ public class AnimationController : MonoBehaviour
     public GameObject player;
     public PlayerController pc;
     public LayerMask EnemyLayer;
-
+    
+    public Transform carryLocation;
+	public Transform drop;	
+    public Transform currentItem = null;
+    //public Transform currentItem = null;
+    
+    public RaycastHit2D hit;
+    public bool grabbed=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +55,9 @@ public class AnimationController : MonoBehaviour
            
          }
 
-
+         if(currentItem!=null){
+         	currentItem.position = carryLocation.position;
+         }
     }
 
     public bool isMoving()
@@ -68,36 +77,49 @@ public class AnimationController : MonoBehaviour
     
     public void grab()
     {
-        /*
-         if (pc.currentItem!=null)
+    	Debug.Log("Grabbing");
+        
+         if (currentItem!=null)
             {
                 // remove as child
-                pc.currentItem.parent = null;
+                currentItem.parent = null;
 
                 //set position near player
-                //pc.currentItem.position = transform.GetComponent<pc.TheSpriteRenderer>().bounds.max;
-
+                
+               	currentItem.position = drop.position;
+                currentItem.tag="bad";
+				Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
+    			rb.gravityScale=1;
                 // release reference
-                pc.currentItem = null;
-            }
-    	RaycastHit2D hit;
-    	if(pc.fRight){
-    		hit= Physics2D.Raycast(pc.gameObject.transform.position,
-    		pc.gameObject.transform.right,
-    		1.0f,
-    		EnemyLayer);
-    	}else{
-    		hit= Physics2D.Raycast(pc.gameObject.transform.position,
-    		pc.gameObject.transform.left,
-    		1.0f,
-    		EnemyLayer);
-    	}
-    	if(hit.collider != null){
-    		Debug.Log("grab");
-    	}
+                currentItem = null;
+                grabbed=false;
+         }else{
+         	Debug.Log("NoItem");
+    		if(pc.fRight){
+    			hit= Physics2D.Raycast(pc.gameObject.transform.position,
+    			pc.gameObject.transform.right,
+    			5.0f,
+    			EnemyLayer);
+    		}else{
+    			hit= Physics2D.Raycast(pc.gameObject.transform.position,
+    			pc.gameObject.transform.right*(-1),
+    			5.0f,
+    			EnemyLayer);
+    		}
+    		if(hit.collider != null){
+    			Debug.Log("detected");
+    			grabbed=true;
+    			currentItem= hit.collider.transform;
+    			currentItem.tag="grab";
+    			Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
+    			rb.gravityScale=0;
+    			currentItem.position = carryLocation.position;
+    			currentItem.parent = transform;
+    		}
+         }
 
 
-        */
+        
     }
 
 }
