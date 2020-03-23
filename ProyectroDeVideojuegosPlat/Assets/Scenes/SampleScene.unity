@@ -177,6 +177,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &109345340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109345338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ae85d23a05c45c3bb9a4821059e7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbed: 0
+  distance: 4
+  holdPoint: {fileID: 1896522646}
+  throwForce: 1
+  notbox:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &109345343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6154675668329198678, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
@@ -873,7 +892,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.22519782}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -884,7 +903,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9999999, y: 1}
+  m_Size: {x: 0.9999999, y: 1.4503956}
   m_EdgeRadius: 0
 --- !u!1 &1198629011
 GameObject:
@@ -1140,6 +1159,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099119906497849743, guid: 6977e9711d8884974bd95e0a2c5e74f2,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15263367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099119906497849743, guid: 6977e9711d8884974bd95e0a2c5e74f2,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3052673
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6977e9711d8884974bd95e0a2c5e74f2, type: 3}
@@ -1512,6 +1541,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1896522646 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6154675667648369612, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6154675667958704955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1950735909 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6099119906497849742, guid: 6977e9711d8884974bd95e0a2c5e74f2,
@@ -1893,10 +1928,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6154675667648369612, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675667648369612, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6154675667648369613, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675667648369613, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_Name
+      value: holdPoint
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198672, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
