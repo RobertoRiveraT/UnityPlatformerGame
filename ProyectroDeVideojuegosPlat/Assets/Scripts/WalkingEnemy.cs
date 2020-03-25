@@ -13,17 +13,12 @@ public class WalkingEnemy : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		cha.velocity=new Vector2(vel,0);
-	}
-	
-	private void OnCollisionEnter2D(Collision2D other){
-		GameObject ney= other.gameObject;
-		if(ney.tag=="wall"){
-			Debug.Log("colision");
-			vel=vel*(-1);
-			Voltear();
+		if(this.gameObject.tag=="bad"){
+			cha.velocity=new Vector2(vel,0);
 		}
 	}
+	
+	
 	
 	void Voltear(){
 		Vector3 Scaler = transform.localScale;
@@ -33,7 +28,7 @@ public class WalkingEnemy : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D other) {
     	GameObject ney= other.gameObject;
-		if(ney.tag=="mover"){
+		if(ney.tag=="mover" && this.gameObject.tag=="bad"){
 			Debug.Log("turn");
 			vel=vel*(-1);
 			Voltear();

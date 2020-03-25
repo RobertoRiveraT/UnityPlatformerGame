@@ -16,6 +16,7 @@ public class AnimationController : MonoBehaviour
     
     public RaycastHit2D hit;
     public bool grabbed=false;
+    public float force;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,9 +88,17 @@ public class AnimationController : MonoBehaviour
                 //set position near player
                 
                	currentItem.position = drop.position;
-                currentItem.tag="bad";
+               	if(pc.fRight){
+                	currentItem.tag="thrownRight";
+               	}else{
+               		currentItem.tag="thrownLeft";
+               	}
+               	
+               	BoxCollider2D box= currentItem.GetComponent<BoxCollider2D>();
+               	box.isTrigger=false;
 				Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
-    			rb.gravityScale=1;
+				rb.bodyType = RigidbodyType2D.Dynamic;
+    			rb.gravityScale=0;
                 // release reference
                 currentItem = null;
                 grabbed=false;
@@ -112,7 +121,12 @@ public class AnimationController : MonoBehaviour
     			currentItem= hit.collider.transform;
     			currentItem.tag="grab";
     			Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
+    			BoxCollider2D box= currentItem.GetComponent<BoxCollider2D>();
     			rb.gravityScale=0;
+    			rb.constraints = RigidbodyConstraints2D.None;
+    			if(box.isTrigger==false){
+    				box.isTrigger=true;
+    			}
     			currentItem.position = carryLocation.position;
     			currentItem.parent = transform;
     		}

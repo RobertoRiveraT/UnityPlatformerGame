@@ -7,6 +7,9 @@ TagManager:
   - mover
   - bad
   - grab
+  - thrown
+  - thrownRight
+  - thrownLeft
   layers:
   - Default
   - TransparentFX
