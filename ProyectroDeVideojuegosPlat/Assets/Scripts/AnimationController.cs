@@ -8,9 +8,11 @@ public class AnimationController : MonoBehaviour
     public GameObject player;
     public PlayerController pc;
     public LayerMask EnemyLayer;
+    public Transform hold;
     public  bool _grounded = false;
     public float MaxSpeed = 10f;
     public float JumpForce = 400;
+    public bool isGrabbing = false;
     
     public Transform carryLocation;
 	public Transform drop;	
@@ -44,6 +46,7 @@ public class AnimationController : MonoBehaviour
     void Update()
     {
 
+
         if (Input.GetKeyDown(KeyCode.Space) && onGround()){
             Debug.Log("Jump");
             animator.SetBool("Ground", false);
@@ -56,7 +59,30 @@ public class AnimationController : MonoBehaviour
         } else {
             //animator.SetBool("grab", false);
         }
-    
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentItem!=null && !onGround()){
+                Debug.Log("Vas a caer");
+                pc.flyB = false;
+                pc.DJump();
+                currentItem.position = pc.holdPoint.position;
+                //Aqui Nacho 
+                /*BoxCollider2D box= currentItem.GetComponent<BoxCollider2D>();
+               	box.isTrigger=false;
+				Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
+				rb.bodyType = RigidbodyType2D.Dynamic;
+    			rb.gravityScale=4.0f;
+                //currentItem.parent = null;
+                currentItem = null;
+                grabbed=false;
+                isGrabbing = false;*/
+            }
+            else{
+                pc.flyB = true;;
+            }
+        }
+
         if (isMoving() && onGround())
         {
             Debug.Log("moving");
@@ -71,9 +97,9 @@ public class AnimationController : MonoBehaviour
            
         }
 
-        if(currentItem!=null){
+        /*if(currentItem!=null){
             currentItem.position = carryLocation.position;
-        }
+        }*/
     }
 
     public bool isMoving()
@@ -94,9 +120,10 @@ public class AnimationController : MonoBehaviour
     public void grab()
     {
     	Debug.Log("Grabbing");
-        
+        isGrabbing = true;
          if (currentItem!=null)
             {
+                
                 // remove as child
                 currentItem.parent = null;
 
@@ -117,7 +144,9 @@ public class AnimationController : MonoBehaviour
                 // release reference
                 currentItem = null;
                 grabbed=false;
+                isGrabbing = false;
          }else{
+
          	Debug.Log("NoItem");
     		if(pc.fRight){
     			hit= Physics2D.Raycast(pc.gameObject.transform.position,
@@ -150,5 +179,6 @@ public class AnimationController : MonoBehaviour
 
         
     }
+
 
 }

@@ -32,15 +32,18 @@ public class PlayerController : MonoBehaviour
 
     public float iniX;
     public float iniY;
-
+    public bool flyB = true;
     public int step = 0;
-    public float flyTime = 1.5f;
+    public float flyTime = 0.5f;
     //int doubleJump = 0;
     //int floatP = 0;
 
     
     private Animator animator;
-    
+    public AnimationController animationC;
+
+    public Transform holdPoint;
+
    
 
     // Start is called before the first frame update
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
         step = 0;
 
         animator = GetComponent<Animator>();
+        animationC = GetComponent<AnimationController>();
 
     }
 
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
     public void Movement()
     {
         boxc.enabled = true;
-
+        
         float x = Input.GetAxis("Horizontal");
 
         //run
@@ -119,8 +123,8 @@ public class PlayerController : MonoBehaviour
             rigid.rotation = 0;
             doubleJump--;
         }*/
-        if (Input.GetKeyDown(KeyCode.Space) && !onPlatform() && floatP > 0 && doubleJump > 0)
-        {   
+        if (Input.GetKeyDown(KeyCode.Space) && !onPlatform() && floatP > 0 && doubleJump > 0 && flyB)
+        {     
             StartCoroutine("fly");
             //rigid.velocity = Vector2.up * jumpHeight;
             rigid.rotation = 0;
@@ -208,9 +212,18 @@ public class PlayerController : MonoBehaviour
         rigid.velocity = Vector2.up * 0f;
         //gameObject.transform.Translate(new Vector3(0.1f, 0, 0));
         yield return new WaitForSeconds(flyTime);
-        rigid.gravityScale = 3.0f;
+        rigid.gravityScale = 4.5f;
         //isHitted = false;
     }
+
+    public void DJump(){
+        
+        rigid.velocity = Vector2.up * jumpHeight;
+        rigid.rotation = 0;  
+                  
+    }
+
+    
 }
 
 

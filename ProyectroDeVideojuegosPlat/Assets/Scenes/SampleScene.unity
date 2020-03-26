@@ -194,7 +194,6 @@ MonoBehaviour:
   holdPoint: {fileID: 1896522646}
   throwForce: 1
   notbox:
-    serializedVersion: 2
     m_Bits: 0
 --- !u!4 &109345343 stripped
 Transform:
@@ -537,6 +536,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &600239782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600239783}
+  m_Layer: 0
+  m_Name: Hold
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &600239783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600239782}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: -4.599, z: -4.0629597}
+  m_LocalScale: {x: 3.333333, y: 3.333333, z: 2}
+  m_Children: []
+  m_Father: {fileID: 109345343}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &608782613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 551263675137692798, guid: 990bf90bb7c234269850e2f677555f37,
@@ -633,9 +662,11 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  hold: {fileID: 0}
   _grounded: 0
   MaxSpeed: 10
   JumpForce: 400
+  isGrabbing: 0
   carryLocation: {fileID: 1364227755}
   drop: {fileID: 2092361378}
   currentItem: {fileID: 0}
@@ -1993,7 +2024,7 @@ PrefabInstance:
     - target: {fileID: 6154675667648369612, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6154675667648369613, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -2050,6 +2081,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198673, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: frames.Array.size
@@ -2063,7 +2099,7 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: playerVelocity
-      value: 0.04
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -2126,13 +2162,23 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: playerRunningVelocity
-      value: 0.16
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: jumpHeight
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: flyTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: holdPoint
+      value: 
+      objectReference: {fileID: 1896522646}
     - target: {fileID: 6154675668329198675, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Name
