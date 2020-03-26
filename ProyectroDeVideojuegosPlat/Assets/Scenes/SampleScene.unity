@@ -633,6 +633,9 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  _grounded: 0
+  MaxSpeed: 10
+  JumpForce: 400
   carryLocation: {fileID: 1364227755}
   drop: {fileID: 2092361378}
   currentItem: {fileID: 0}
@@ -1960,7 +1963,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 974a12c416dd26647a8ade9e47a8a7be,
+      objectReference: {fileID: 21300000, guid: 0b26781ca4f5f694d8f54e9976f33398,
         type: 3}
     - target: {fileID: 6154675667457983089, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -2143,12 +2146,12 @@ PrefabInstance:
     - target: {fileID: 6154675668329198678, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.85
+      value: -10.95
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198678, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198678, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}

@@ -8,6 +8,9 @@ public class AnimationController : MonoBehaviour
     public GameObject player;
     public PlayerController pc;
     public LayerMask EnemyLayer;
+    public  bool _grounded = false;
+    public float MaxSpeed = 10f;
+    public float JumpForce = 400;
     
     public Transform carryLocation;
 	public Transform drop;	
@@ -24,24 +27,37 @@ public class AnimationController : MonoBehaviour
         pc = player.GetComponent<PlayerController>();
     }
 
+    void FixedUpdate (){
+
+        _grounded = onGround();
+        animator.SetBool("Ground", _grounded);
+        animator.SetFloat("vSpeed", pc.GetComponent<Rigidbody2D>().velocity.y);
+
+        float move = Input.GetAxis("Horizontal");
+        Rigidbody2D r2d = player.GetComponent<Rigidbody2D>();
+        animator.SetFloat("Speed", Mathf.Abs(move));
+        r2d.velocity = new Vector2(move * MaxSpeed, r2d.velocity.y);
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+
+        if (Input.GetKeyDown(KeyCode.Space) && onGround()){
             Debug.Log("Jump");
-            animator.SetTrigger("jump");
+            animator.SetBool("Ground", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("Grab");
             animator.SetBool("grab", true);
-        }else{
+        } else {
             //animator.SetBool("grab", false);
         }
-
-        if (isMoving() && !onAir())
+    
+        if (isMoving() && onGround())
         {
             Debug.Log("moving");
             animator.SetBool("running", true);
@@ -51,14 +67,13 @@ public class AnimationController : MonoBehaviour
             animator.SetBool("running", false);
         }
         
-         if(Input.GetKeyDown(KeyCode.Space))
-         {
+        if(Input.GetKeyDown(KeyCode.Space)){
            
-         }
+        }
 
-         if(currentItem!=null){
-         	currentItem.position = carryLocation.position;
-         }
+        if(currentItem!=null){
+            currentItem.position = carryLocation.position;
+        }
     }
 
     public bool isMoving()
@@ -66,9 +81,9 @@ public class AnimationController : MonoBehaviour
         return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
     }
 
-    public bool onAir()
+    public bool onGround()
     {
-        return !(pc.onPlatform());
+        return pc.onPlatform();
     }
 
     public void desGrab()
