@@ -45,6 +45,9 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(currentItem!= null){
+            pc.flyB = false;
+        }
 
 
         if (Input.GetKeyDown(KeyCode.Space) && onGround()){
@@ -98,9 +101,9 @@ public class AnimationController : MonoBehaviour
            
         }
 
-        /*if(currentItem!=null){
+        if(currentItem!=null){
             currentItem.position = carryLocation.position;
-        }*/
+        }
     }
 
     public bool isMoving()
