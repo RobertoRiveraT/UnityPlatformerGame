@@ -10,8 +10,8 @@ public class JumpingEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    	cha= GetComponent<Rigidbody2D>();
     	if(this.gameObject.tag=="bad"){
-        	cha= GetComponent<Rigidbody2D>();
         	StartCoroutine(jump());
     	}
     }

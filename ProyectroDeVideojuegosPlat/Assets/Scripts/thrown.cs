@@ -27,7 +27,7 @@ public class thrown : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other){
     	Debug.Log("col");
-    	if(this.gameObject.tag=="thrownRight"||this.gameObject.tag=="thrownLeft"){
+    	if(this.gameObject.tag=="thrownRight"||this.gameObject.tag=="thrownLeft"||this.gameObject.tag=="thrown"){
 			Destroy(gameObject);
     	}
 	}

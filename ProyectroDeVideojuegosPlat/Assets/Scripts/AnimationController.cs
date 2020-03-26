@@ -68,15 +68,16 @@ public class AnimationController : MonoBehaviour
                 pc.DJump();
                 currentItem.position = pc.holdPoint.position;
                 //Aqui Nacho 
-                /*BoxCollider2D box= currentItem.GetComponent<BoxCollider2D>();
+                BoxCollider2D box= currentItem.GetComponent<BoxCollider2D>();
                	box.isTrigger=false;
 				Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
 				rb.bodyType = RigidbodyType2D.Dynamic;
     			rb.gravityScale=4.0f;
-                //currentItem.parent = null;
+    			currentItem.tag="thrown";
+                currentItem.parent = null;
                 currentItem = null;
                 grabbed=false;
-                isGrabbing = false;*/
+                isGrabbing = false;
             }
             else{
                 pc.flyB = true;;
