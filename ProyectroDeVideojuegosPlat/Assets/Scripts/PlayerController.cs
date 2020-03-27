@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator fly()
     {
-        Debug.Log("FLU");
+        Debug.Log("FLY");
         rigid.gravityScale = 0.0f;
         rigid.velocity = Vector2.up * 0f;
         //gameObject.transform.Translate(new Vector3(0.1f, 0, 0));
