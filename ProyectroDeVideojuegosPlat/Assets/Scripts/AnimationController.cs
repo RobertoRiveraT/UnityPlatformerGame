@@ -47,6 +47,11 @@ public class AnimationController : MonoBehaviour
     {
         if(currentItem!= null){
             pc.flyB = false;
+            animator.SetBool("grab", true);
+        }
+        else
+        {
+            animator.SetBool("grab", false);
         }
 
 
@@ -55,12 +60,13 @@ public class AnimationController : MonoBehaviour
             animator.SetBool("Ground", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("Grab");
-            animator.SetBool("grab", true);
-        } else {
-            //animator.SetBool("grab", false);
+        if (Input.GetKeyDown(KeyCode.Z)){
+            if (currentItem == null){
+                Debug.Log("Shoot");
+                animator.SetBool("Shoot", true);
+            }else if (currentItem != null){
+                animator.SetBool("Throw", true);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -118,7 +124,7 @@ public class AnimationController : MonoBehaviour
 
     public void desGrab()
     {
-        animator.SetBool("grab", false);
+        animator.SetBool("Shoot", false);
     }
     
     public void grab()
@@ -127,7 +133,7 @@ public class AnimationController : MonoBehaviour
         isGrabbing = true;
          if (currentItem!=null)
             {
-                
+                //THROW ENEMY
                 // remove as child
                 currentItem.parent = null;
 
@@ -180,9 +186,44 @@ public class AnimationController : MonoBehaviour
     		}
          }
 
+     
 
-        
+
+
+        }
+
+    public void thowEnemy(){
+        animator.SetBool("Throw", false);
+        if (currentItem != null){
+            
+            //THROW ENEMY
+            // remove as child
+            currentItem.parent = null;
+
+            //set position near player
+
+            currentItem.position = drop.position;
+            if (pc.fRight)
+            {
+                currentItem.tag = "thrownRight";
+            }
+            else
+            {
+                currentItem.tag = "thrownLeft";
+            }
+
+            BoxCollider2D box = currentItem.GetComponent<BoxCollider2D>();
+            box.isTrigger = false;
+            Rigidbody2D rb = currentItem.gameObject.GetComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 0;
+            // release reference
+            currentItem = null;
+            grabbed = false;
+            isGrabbing = false;
+        }
     }
+      
 
 
-}
+    }
