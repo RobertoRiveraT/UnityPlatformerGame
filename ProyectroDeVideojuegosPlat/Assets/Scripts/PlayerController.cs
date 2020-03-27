@@ -191,6 +191,7 @@ public class PlayerController : MonoBehaviour
         if (ney.tag == "bad")
         {
             //el jugador recibe daño
+            StartCoroutine(startCoroutine());
             Debug.Log("ouch");
             health = health - .1f;
             if(health <= 0){
@@ -203,6 +204,7 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+
     }
 
     IEnumerator fly()
@@ -223,7 +225,13 @@ public class PlayerController : MonoBehaviour
                   
     }
 
-    
+    IEnumerator startCoroutine()
+    {
+        TheSpriteRenderer.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(1);
+        TheSpriteRenderer.color = new Color(255, 255, 255);
+    }
+
 }
 
 
