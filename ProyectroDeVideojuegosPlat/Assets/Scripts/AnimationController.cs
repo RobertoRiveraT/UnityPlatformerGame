@@ -223,7 +223,5 @@ public class AnimationController : MonoBehaviour
             isGrabbing = false;
         }
     }
-      
 
-
-    }
+}

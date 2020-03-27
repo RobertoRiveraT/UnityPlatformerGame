@@ -2596,7 +2596,7 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: playerVelocity
-      value: 0.02
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
@@ -2664,18 +2664,23 @@ PrefabInstance:
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: jumpHeight
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: flyTime
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: holdPoint
       value: 
       objectReference: {fileID: 1896522646}
+    - target: {fileID: 6154675668329198674, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
+        type: 3}
+      propertyPath: doubleJump
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6154675668329198675, guid: 17be7816d16ff47b3a902ddcf4bbb85b,
         type: 3}
       propertyPath: m_Name
