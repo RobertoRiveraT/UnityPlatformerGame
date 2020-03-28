@@ -60,11 +60,21 @@ public class AnimationController : MonoBehaviour
             animator.SetBool("Ground", false);
         }
 
+        ////revisar si hay double jump !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (pc.doubleJumpCheck)
+        {
+            Debug.Log("pc: true");
+            animator.SetBool("Shoot", false);   
+        }
+
         if (Input.GetKeyDown(KeyCode.Z)){
             if (currentItem == null){
                 Debug.Log("Shoot");
-                animator.SetBool("Shoot", true);
-            }else if (currentItem != null){
+                animator.SetBool("Throw", false);
+                animator.SetBool("Shoot", true);  
+            }
+            else if (currentItem != null){
+                animator.SetBool("Shoot", false);
                 animator.SetBool("Throw", true);
             }
         }
@@ -126,7 +136,7 @@ public class AnimationController : MonoBehaviour
     {
         animator.SetBool("Shoot", false);
     }
-    
+
     public void grab()
     {
     	Debug.Log("Grabbing");

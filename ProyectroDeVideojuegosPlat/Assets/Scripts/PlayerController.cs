@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public int doubleJump;
     public int floatP;
 
+    public bool doubleJumpCheck= false;
+
     public float lastPressTime;
 
     public float iniX;
@@ -116,6 +118,7 @@ public class PlayerController : MonoBehaviour
         if (onPlatform())
         {
             rigid.rotation = 0;
+            doubleJumpCheck = false;
         }
         /*if (Input.GetKeyDown(KeyCode.Space) && doubleJump > 0)
         {
@@ -130,9 +133,8 @@ public class PlayerController : MonoBehaviour
             rigid.rotation = 0;
             floatP--;
             doubleJump--;
-        }
-        else if (onPlatform() && Input.GetKeyDown(KeyCode.Space))
-        {
+
+        }else if (onPlatform() && Input.GetKeyDown(KeyCode.Space)){
             //fly();
             rigid.rotation = 0;
             rigid.velocity = Vector2.up * jumpHeight;
@@ -221,8 +223,8 @@ public class PlayerController : MonoBehaviour
     public void DJump(){
         
         rigid.velocity = Vector2.up * jumpHeight;
-        rigid.rotation = 0;  
-                  
+        rigid.rotation = 0;
+        doubleJumpCheck = true;
     }
 
     IEnumerator startCoroutine()
