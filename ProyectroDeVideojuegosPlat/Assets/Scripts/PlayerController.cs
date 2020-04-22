@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
             //print("down arrow key is held down");
         }
 
-        if (gameObject.transform.position.y < -5)
+        if (gameObject.transform.position.y < -50)
         {
             //Debug.Log("caiste");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
