@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Save();
         iniX = gameObject.transform.position.x;
         iniY = gameObject.transform.position.y;
         rigid = transform.GetComponent<Rigidbody2D>();
@@ -161,7 +161,8 @@ public class PlayerController : MonoBehaviour
         if (gameObject.transform.position.y < -50)
         {
             //Debug.Log("caiste");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Load();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
@@ -211,6 +212,10 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             StartCoroutine(waiter());
         }
+        else if(other.gameObject.name == "Checkpoint" || other.gameObject.name == "Checkpoint_1" || other.gameObject.name == "Checkpoint_2"){
+            Destroy(other.gameObject);
+            Save();
+        }
     }
 
     IEnumerator fly()
@@ -246,6 +251,19 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
 
+    }
+
+    public void Save(){
+        SaveSystem.Salvar(this);
+    }
+
+    public void Load(){
+        Game data = SaveSystem.Cargar();
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        transform.position = position;
     }
 
 }
