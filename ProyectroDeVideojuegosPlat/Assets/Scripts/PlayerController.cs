@@ -186,6 +186,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Col");
@@ -206,7 +207,10 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
+        if(other.gameObject.name == "BlackHole"){
+            Destroy(other.gameObject);
+            StartCoroutine(waiter());
+        }
     }
 
     IEnumerator fly()
@@ -232,6 +236,16 @@ public class PlayerController : MonoBehaviour
         TheSpriteRenderer.color = new Color(255, 0, 0);
         yield return new WaitForSeconds(1);
         TheSpriteRenderer.color = new Color(255, 255, 255);
+    }
+
+
+    IEnumerator waiter()
+    {
+        //Wait for 2 seconds
+        //SoundManagerController.PlaySound("pickup"); aqui va el del blackhole
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+
     }
 
 }

@@ -11,6 +11,7 @@ TagManager:
   - thrownRight
   - thrownLeft
   - Platform
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
