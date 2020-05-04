@@ -5,10 +5,12 @@ using UnityEngine;
 public class FloatingEnemy : MonoBehaviour
 {
    public float vel;
+	public Animator animator;
 	private Rigidbody2D cha;
 	// Use this for initialization
 	void Start () {
-		cha= GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
+		cha = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -16,7 +18,14 @@ public class FloatingEnemy : MonoBehaviour
 		if(this.gameObject.tag=="bad"){
 		cha.velocity=new Vector2(0,vel);
 		}
-		
+
+		animator.SetBool("flying", true);
+
+		if (this.gameObject.tag == "grab")
+		{
+			animator.SetBool("grabbed", true);
+		}
+
 	}
 	
 	private void OnTriggerEnter2D(Collider2D other) {

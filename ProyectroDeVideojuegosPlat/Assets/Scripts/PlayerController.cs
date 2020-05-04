@@ -173,6 +173,11 @@ public class PlayerController : MonoBehaviour
         return raycastHit2d.collider != null;
     }
 
+    public bool isFlying()
+    {
+        return (Input.GetKeyDown(KeyCode.Space) && !onPlatform() && floatP > 0 && doubleJump > 0 && flyB);
+    }
+
     public void Flip()
     {
         fRight = !fRight;

@@ -103,6 +103,11 @@ public class AnimationController : MonoBehaviour
             }
         }
 
+        if (isMoving())
+        {
+            Debug.Log("is moveing");
+        }
+
         if (isMoving() && onGround())
         {
             Debug.Log("moving");
@@ -120,11 +125,24 @@ public class AnimationController : MonoBehaviour
         if(currentItem!=null){
             currentItem.position = carryLocation.position;
         }
+
+        if (isFloating())
+        {
+            animator.SetBool("Float", true);
+        }
     }
 
     public bool isMoving()
     {
-        return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
+        ///agregar el map con las jeys A y D sino no va a animar
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool onGround()
@@ -132,9 +150,19 @@ public class AnimationController : MonoBehaviour
         return pc.onPlatform();
     }
 
+    public bool isFloating()
+    {
+        return pc.isFlying();
+    }
+
     public void desGrab()
     {
         animator.SetBool("Shoot", false);
+    }
+
+    public void desFloat()
+    {
+        animator.SetBool("Float", false);
     }
 
     public void grab()

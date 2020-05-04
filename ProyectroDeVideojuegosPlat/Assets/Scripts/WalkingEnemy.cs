@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class WalkingEnemy : MonoBehaviour
 {
-   public float vel;
+	public float vel;
+	public Animator animator;
 	private Rigidbody2D cha;
 	// Use this for initialization
 	void Start () {
-		cha= GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
+		cha = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -16,9 +18,14 @@ public class WalkingEnemy : MonoBehaviour
 		if(this.gameObject.tag=="bad"){
 			cha.velocity=new Vector2(vel,0);
 		}
+
+		animator.SetBool("running", true);
+
+		if (this.gameObject.tag == "grab")
+		{
+			animator.SetBool("grabbed", true);
+		}
 	}
-	
-	
 	
 	void Voltear(){
 		Vector3 Scaler = transform.localScale;
