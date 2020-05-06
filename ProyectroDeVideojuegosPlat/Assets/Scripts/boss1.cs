@@ -12,6 +12,7 @@ public class boss1 : MonoBehaviour
     void Start () {
 		render = GetComponent<SpriteRenderer>();
         dColor = render.color;
+		life = 5;
 	}
     
     private void OnTriggerEnter2D(Collider2D other) {

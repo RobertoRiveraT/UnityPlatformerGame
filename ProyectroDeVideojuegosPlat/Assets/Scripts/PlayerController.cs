@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public bool fRight = true;
 
+
     public float jumpHeight, health;
     public float playerVelocity;
     public float playerRunningVelocity;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public float lastPressTime;
 
     public float iniX;
+    int checkpoints;
     public float iniY;
     public bool flyB = true;
     public int step = 0;
@@ -50,13 +52,14 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         Save();
         iniX = gameObject.transform.position.x;
         iniY = gameObject.transform.position.y;
         rigid = transform.GetComponent<Rigidbody2D>();
         boxc = transform.GetComponent<BoxCollider2D>();
         health = 1f;
+        checkpoints = 0;
         healthBar.setHealth(health);
 
         step = 0;
@@ -202,13 +205,22 @@ public class PlayerController : MonoBehaviour
             //el jugador recibe daño
             StartCoroutine(startCoroutine());
             Debug.Log("ouch");
-            health = health - .1f;
+            health = health - .25f;
 
             FindObjectOfType<AudioController>().Play("PlayerHurt");
 
             if (health <= 0){
                 Debug.Log("You died");
-                healthBar.setHealth(0);
+                health = 1f;
+                healthBar.setHealth(health);
+                if(checkpoints>0){
+                    Load();
+                }
+                else{
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);       
+                }
+                
+                //healthBar.setHealth(0);
             }
             else{
                 Debug.Log(health);
@@ -221,6 +233,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(waiter());
         }
         else if(other.gameObject.name == "Checkpoint" || other.gameObject.name == "Checkpoint_1" || other.gameObject.name == "Checkpoint_2"){
+            checkpoints++;
             Destroy(other.gameObject);
             Save();
         }
