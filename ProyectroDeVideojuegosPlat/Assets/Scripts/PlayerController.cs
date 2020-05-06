@@ -203,7 +203,10 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(startCoroutine());
             Debug.Log("ouch");
             health = health - .1f;
-            if(health <= 0){
+
+            FindObjectOfType<AudioController>().Play("PlayerHurt");
+
+            if (health <= 0){
                 Debug.Log("You died");
                 healthBar.setHealth(0);
             }

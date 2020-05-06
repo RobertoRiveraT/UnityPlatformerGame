@@ -9,18 +9,18 @@ public class AnimationController : MonoBehaviour
     public PlayerController pc;
     public LayerMask EnemyLayer;
     public Transform hold;
-    public  bool _grounded = false;
+    public bool _grounded = false;
     public float MaxSpeed = 10f;
     public float JumpForce = 400;
     public bool isGrabbing = false;
-    
+
     public Transform carryLocation;
-	public Transform drop;	
+    public Transform drop;
     public Transform currentItem = null;
     //public Transform currentItem = null;
-    
+
     public RaycastHit2D hit;
-    public bool grabbed=false;
+    public bool grabbed = false;
     public float force;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class AnimationController : MonoBehaviour
         pc = player.GetComponent<PlayerController>();
     }
 
-    void FixedUpdate (){
+    void FixedUpdate() {
 
         _grounded = onGround();
         animator.SetBool("Ground", _grounded);
@@ -45,7 +45,7 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentItem!= null){
+        if (currentItem != null) {
             pc.flyB = false;
             animator.SetBool("grab", true);
         }
@@ -55,25 +55,29 @@ public class AnimationController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && onGround()){
+        if (Input.GetKeyDown(KeyCode.Space) && onGround()) {
             Debug.Log("Jump");
             animator.SetBool("Ground", false);
+
+            FindObjectOfType<AudioController>().Play("PlayerJump");
         }
 
         ////revisar si hay double jump !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (pc.doubleJumpCheck)
         {
             Debug.Log("pc: true");
-            animator.SetBool("Shoot", false);   
+            animator.SetBool("Shoot", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z)){
-            if (currentItem == null){
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            if (currentItem == null) {
                 Debug.Log("Shoot");
                 animator.SetBool("Throw", false);
-                animator.SetBool("Shoot", true);  
+                animator.SetBool("Shoot", true);
+
+                FindObjectOfType<AudioController>().Play("PlayerGrab");
             }
-            else if (currentItem != null){
+            else if (currentItem != null) {
                 animator.SetBool("Shoot", false);
                 animator.SetBool("Throw", true);
             }
@@ -81,25 +85,25 @@ public class AnimationController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentItem!=null && !onGround()){
+            if (currentItem != null && !onGround()) {
                 Debug.Log("Vas a caer");
                 pc.flyB = false;
                 pc.DJump();
                 currentItem.position = pc.holdPoint.position;
                 //Aqui Nacho 
-                BoxCollider2D box= currentItem.GetComponent<BoxCollider2D>();
-               	box.isTrigger=false;
-				Rigidbody2D rb= currentItem.gameObject.GetComponent<Rigidbody2D>();
-				rb.bodyType = RigidbodyType2D.Dynamic;
-    			rb.gravityScale=4.0f;
-    			currentItem.tag="thrown";
+                BoxCollider2D box = currentItem.GetComponent<BoxCollider2D>();
+                box.isTrigger = false;
+                Rigidbody2D rb = currentItem.gameObject.GetComponent<Rigidbody2D>();
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.gravityScale = 4.0f;
+                currentItem.tag = "thrown";
                 currentItem.parent = null;
                 currentItem = null;
-                grabbed=false;
+                grabbed = false;
                 isGrabbing = false;
             }
-            else{
-                pc.flyB = true;;
+            else {
+                pc.flyB = true; ;
             }
         }
 
@@ -117,12 +121,12 @@ public class AnimationController : MonoBehaviour
         {
             animator.SetBool("running", false);
         }
-        
-        if(Input.GetKeyDown(KeyCode.Space)){
-           
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+
         }
 
-        if(currentItem!=null){
+        if (currentItem != null) {
             currentItem.position = carryLocation.position;
         }
 
@@ -224,14 +228,28 @@ public class AnimationController : MonoBehaviour
     		}
          }
 
-     
-
-
-
+   
         }
 
-    public void thowEnemy(){
+    public void desThrow()
+    {
         animator.SetBool("Throw", false);
+    }
+    public void groundThrow()
+    {
+        if (onGround())
+        {
+            thowEnemy();
+        }
+    }
+    public void airThrow()
+    {
+        if (!onGround())
+        {
+            thowEnemy();
+        }
+    }
+    public void thowEnemy(){
         if (currentItem != null){
             
             //THROW ENEMY
