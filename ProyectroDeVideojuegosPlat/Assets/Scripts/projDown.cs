@@ -14,7 +14,9 @@ public class projDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	if(this.gameObject.tag=="bad"){
         gameObject.transform.Translate(new Vector3(0,vel,0));
+    	}
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
