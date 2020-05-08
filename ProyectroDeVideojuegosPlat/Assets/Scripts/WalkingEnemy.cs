@@ -41,6 +41,5 @@ public class WalkingEnemy : MonoBehaviour
 			Voltear();
 		}
     }
-	
-	
+		
 }
