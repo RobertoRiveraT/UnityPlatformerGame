@@ -53,7 +53,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        Save();
+        //Save();
+        if(SaveSystem.died){
+            Load();
+            SaveSystem.died = false;
+        }else{
+            Save();
+        }    
         iniX = gameObject.transform.position.x;
         iniY = gameObject.transform.position.y;
         rigid = transform.GetComponent<Rigidbody2D>();
@@ -164,8 +170,9 @@ public class PlayerController : MonoBehaviour
         if (gameObject.transform.position.y < -50)
         {
             //Debug.Log("caiste");
-            Load();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Load();
+            SaveSystem.died = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
@@ -213,13 +220,16 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("You died");
                 health = 1f;
                 healthBar.setHealth(health);
+                SaveSystem.died = true;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);   
+                /*
                 if(checkpoints>0){
                     Load();
                 }
                 else{
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);       
                 }
-                
+                */
                 //healthBar.setHealth(0);
             }
             else{

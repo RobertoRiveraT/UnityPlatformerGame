@@ -10,6 +10,8 @@ using System.IO;
 [System.Serializable]
 public static class SaveSystem 
 {
+    public static bool died;
+
     public static void Salvar(PlayerController player){
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.txt";
