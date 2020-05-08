@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6476141804929050110}
   - component: {fileID: 6476141804929050100}
   - component: {fileID: 6476141804929050107}
+  - component: {fileID: 752802195666049809}
   m_Layer: 9
   m_Name: shootinEnemyRight
   m_TagString: bad
@@ -205,6 +206,7 @@ MonoBehaviour:
   shooter: {fileID: 6476141804620582472}
   mil: {fileID: 1125709198765160844, guid: 6f2ee2cbaf89f504bb0d37230d1d5914, type: 3}
   shootTime: 2
+  animator: {fileID: 0}
 --- !u!114 &6476141804929050107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,3 +220,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5
+--- !u!95 &752802195666049809
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476141804929050109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b1f6f01b07119d4d848ddae3219b605, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

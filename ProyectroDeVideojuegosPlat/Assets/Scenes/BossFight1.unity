@@ -471,9 +471,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: dklasdjkals
-    clip: {fileID: 8300000, guid: bfdb94f2834a30f48bd317906bf36b32, type: 3}
-    volume: 0.049
+  - name: BGM
+    clip: {fileID: 8300000, guid: 4a8af25de38d7ac479888089d86adb62, type: 3}
+    volume: 0.05
     pitch: 1
     loop: 0
     source: {fileID: 0}

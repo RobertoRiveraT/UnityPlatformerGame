@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingEnemy : MonoBehaviour
 {
-   public float vel;
+	public float vel;
 	public Animator animator;
 	private Rigidbody2D cha;
 	// Use this for initialization

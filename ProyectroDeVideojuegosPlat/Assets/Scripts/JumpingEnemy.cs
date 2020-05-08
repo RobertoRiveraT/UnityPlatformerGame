@@ -7,10 +7,12 @@ public class JumpingEnemy : MonoBehaviour
 	public float salto;
 	private Rigidbody2D cha;
 	public float jumpTime;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-    	cha= GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        cha = GetComponent<Rigidbody2D>();
     	if(this.gameObject.tag=="bad"){
         	StartCoroutine(jump());
     	}
@@ -19,7 +21,11 @@ public class JumpingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (this.gameObject.tag == "grab")
+        {
+            animator.SetBool("grabbed", true);
+        }
     }
     
     IEnumerator jump(){
