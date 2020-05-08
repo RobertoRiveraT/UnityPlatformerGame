@@ -121,6 +121,86 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &198228050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198228052}
+  - component: {fileID: 198228051}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &198228051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198228050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929ce1bfc469d4049bff4f2d306b3e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: PlayerGrab
+    clip: {fileID: 8300000, guid: ab3da73f61a81374d9d2fba13a58d7b7, type: 3}
+    volume: 0.1
+    pitch: 1.25
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerJump
+    clip: {fileID: 8300000, guid: a08e34266c158b246b6ac622c36b248e, type: 3}
+    volume: 0.191
+    pitch: 1.69
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHurt
+    clip: {fileID: 8300000, guid: bfdb94f2834a30f48bd317906bf36b32, type: 3}
+    volume: 0.049
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BGM
+    clip: {fileID: 8300000, guid: 40ce703a039afe94b8444d7b6d1ed37a, type: 3}
+    volume: 0.04
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Boss1BGM
+    clip: {fileID: 8300000, guid: 4a8af25de38d7ac479888089d86adb62, type: 3}
+    volume: 0.049
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: dklasdjkals
+    clip: {fileID: 8300000, guid: bfdb94f2834a30f48bd317906bf36b32, type: 3}
+    volume: 0.049
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &198228052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198228050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282848475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Videojuego Epic
+  m_text: Equipo Klonoa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -1310,7 +1390,7 @@ MonoBehaviour:
   m_margin: {x: -260.65588, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1895482625}
-    characterCount: 15
+    characterCount: 13
     spriteCount: 0
     spaceCount: 1
     wordCount: 2

@@ -473,7 +473,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BGM
     clip: {fileID: 8300000, guid: 4a8af25de38d7ac479888089d86adb62, type: 3}
-    volume: 0.05
+    volume: 0.04
     pitch: 1
     loop: 0
     source: {fileID: 0}

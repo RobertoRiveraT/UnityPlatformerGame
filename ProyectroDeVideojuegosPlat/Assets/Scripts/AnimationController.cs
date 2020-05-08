@@ -143,6 +143,10 @@ public class AnimationController : MonoBehaviour
         {
             return true;
         }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        {
+            return true;
+        }
         else
         {
             return false;
