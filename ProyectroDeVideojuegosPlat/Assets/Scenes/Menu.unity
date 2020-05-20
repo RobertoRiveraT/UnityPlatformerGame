@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Elegir Nivel
+  m_text: 'Elegir nivel
 
 '
   m_isRightToLeft: 0
