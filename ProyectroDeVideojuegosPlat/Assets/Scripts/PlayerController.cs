@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private HealthBar healthBar;
 
+    public SpriteRenderer TheSpriteRendererEstrella;
+    public SpriteRenderer TheSpriteRendererEstrella1;
+    public SpriteRenderer TheSpriteRendererEstrella2;
     public SpriteRenderer TheSpriteRenderer;
     //private PlayerBase playerBase;
     public BoxCollider2D boxc;
@@ -57,6 +60,17 @@ public class PlayerController : MonoBehaviour
         if(SaveSystem.died){
             Load();
             SaveSystem.died = false;
+            Debug.Log("IIUHJNSIUN");
+            Debug.Log(SaveSystem.star1);
+            if(SaveSystem.star1 = false ){
+                TheSpriteRendererEstrella.sprite = null;
+            }
+            if(SaveSystem.star2 = false ){
+                    TheSpriteRendererEstrella1.sprite = null;
+            }
+            if(SaveSystem.star3 = false ){
+                    TheSpriteRendererEstrella2.sprite = null;
+            }
         }else{
             Save();
         }    
@@ -83,6 +97,21 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
+        if(SaveSystem.numMuertes < 6 ){
+                TheSpriteRendererEstrella.sprite = null;
+                SaveSystem.star1 = false;
+        }
+            if(SaveSystem.numMuertes < 4){
+                TheSpriteRendererEstrella1.sprite = null;
+                SaveSystem.star2 = false;
+                
+        }
+            if(SaveSystem.numMuertes < 1){
+                TheSpriteRendererEstrella2.sprite = null;
+                SaveSystem.star3 = false;
+                
+        }
+        Debug.Log(SaveSystem.numMuertes);
         boxc.enabled = true;
         
         float x = Input.GetAxis("Horizontal");
@@ -172,6 +201,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("caiste");
             //Load();
             SaveSystem.died = true;
+            SaveSystem.numMuertes--;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -218,6 +248,7 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0){
                 Debug.Log("You died");
+                SaveSystem.numMuertes--;
                 health = 1f;
                 healthBar.setHealth(health);
                 SaveSystem.died = true;

@@ -11,6 +11,11 @@ using System.IO;
 public static class SaveSystem 
 {
     public static bool died;
+    public static bool star1;
+    public static bool star2;
+    public static bool star3;
+
+    public static int numMuertes = 9;
 
     public static void Salvar(PlayerController player){
         BinaryFormatter formatter = new BinaryFormatter();
