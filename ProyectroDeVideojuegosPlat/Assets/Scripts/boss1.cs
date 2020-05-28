@@ -8,7 +8,13 @@ public class boss1 : MonoBehaviour
 	public float timeToColor;
 	SpriteRenderer render;
     Color dColor;
-    
+    public GameObject canvasObject;
+    public GameObject canvas1Object;
+    public GameObject starObject;
+    public GameObject star1Object;
+    public GameObject star2Object;
+    public GameObject btu;
+
     public Transform one;
     public Transform two;
     public Transform three;
@@ -32,6 +38,12 @@ public class boss1 : MonoBehaviour
         twos = two.position;
         threes= three.position;
         _target = ones;
+        canvasObject.SetActive(false);
+                canvas1Object.SetActive(false);
+                starObject.SetActive(false);
+                star1Object.SetActive(false);
+                star2Object.SetActive(false);
+                btu.SetActive(false);
 	}
     
     void Update()
@@ -57,7 +69,17 @@ public class boss1 : MonoBehaviour
     			StartCoroutine(shootGood());
     		}
     		if(life==0){
-    		Destroy(gameObject);
+                Destroy(gameObject);
+                canvasObject.SetActive(true);
+                canvas1Object.SetActive(true);
+                starObject.SetActive(true);
+                star1Object.SetActive(true);
+                star2Object.SetActive(true);
+
+                btu.SetActive(true);
+                            
+              // drag your canvas object to this variable in the editor
+ // make your canvas active from a disables state by calling this method
     		}
     	}
     }
