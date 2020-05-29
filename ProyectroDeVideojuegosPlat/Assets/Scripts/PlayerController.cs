@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 SaveSystem.star3 = false;
                 
         }
-        Debug.Log(SaveSystem.numMuertes);
+        //Debug.Log(SaveSystem.numMuertes);
         boxc.enabled = true;
         
         float x = Input.GetAxis("Horizontal");
@@ -235,19 +235,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Col");
+        //Debug.Log("Col");
         GameObject ney = other.gameObject;
         if (ney.tag == "bad")
         {
             //el jugador recibe daño
             StartCoroutine(startCoroutine());
-            Debug.Log("ouch");
+            //Debug.Log("ouch");
             health = health - .25f;
 
             FindObjectOfType<AudioController>().Play("PlayerHurt");
 
             if (health <= 0){
-                Debug.Log("You died");
+                //g.Log("You died");
                 SaveSystem.numMuertes--;
                 health = 1f;
                 healthBar.setHealth(health);
@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour
                 //healthBar.setHealth(0);
             }
             else{
-                Debug.Log(health);
+                //Debug.Log(health);
                 healthBar.setHealth(health);
             }
             
@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator fly()
     {
-        Debug.Log("FLY");
+        //Debug.Log("FLY");
         rigid.gravityScale = 0.0f;
         rigid.velocity = Vector2.up * 0f;
         //gameObject.transform.Translate(new Vector3(0.1f, 0, 0));

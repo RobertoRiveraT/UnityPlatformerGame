@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     public void PlayGame(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene("Nivel 1");
     }
 
     public void cargar(){
@@ -15,23 +15,23 @@ public class MainMenu : MonoBehaviour
     }
 
     public void Menu(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-2);
+        SceneManager.LoadScene("Menu");
     }
 
     public void Nivel1(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2);
+        SceneManager.LoadScene("Nivel 1");
     }
 
     public void Nivel2(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2);
+        SceneManager.LoadScene("Nivel 1");
     }
 
     public void Nivel3(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2);
+        SceneManager.LoadScene("Nivel 1");
     }
 
     public void Selector(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+        SceneManager.LoadScene("Selector");
     }
 
 }

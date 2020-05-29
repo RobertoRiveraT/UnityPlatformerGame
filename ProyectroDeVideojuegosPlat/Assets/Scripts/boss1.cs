@@ -40,6 +40,7 @@ public class boss1 : MonoBehaviour
         _target = ones;
         canvasObject.SetActive(false);
                 canvas1Object.SetActive(false);
+
                 starObject.SetActive(false);
                 star1Object.SetActive(false);
                 star2Object.SetActive(false);
@@ -48,6 +49,7 @@ public class boss1 : MonoBehaviour
     
     void Update()
     {
+        Debug.Log(SaveSystem.numMuertes);
     	if(life>4){
         	move();
     	}else{
@@ -75,6 +77,16 @@ public class boss1 : MonoBehaviour
                 starObject.SetActive(true);
                 star1Object.SetActive(true);
                 star2Object.SetActive(true);
+                if(SaveSystem.numMuertes < 6){
+                    starObject.SetActive(false);
+                }
+                if(SaveSystem.numMuertes < 4){
+                    star1Object.SetActive(false);
+                }
+                if(SaveSystem.numMuertes < 3){
+                    star2Object.SetActive(false);
+                }
+                
 
                 btu.SetActive(true);
                             
